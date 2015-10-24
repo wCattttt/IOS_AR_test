@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9C234A4F-90F1-4D6F-94F6-6FF8E16DF1AC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F499BDA8D0B0F675CA86A05D20BBDA5D86E4AB1F</key>
+		<string>https://github.com/weiweilong/IOS_AR_test.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Githun_TestCommit/Githun_TestCommit.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F499BDA8D0B0F675CA86A05D20BBDA5D86E4AB1F</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/weiweilong/IOS_AR_test.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F499BDA8D0B0F675CA86A05D20BBDA5D86E4AB1F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F499BDA8D0B0F675CA86A05D20BBDA5D86E4AB1F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IOS_AR_test</string>
+		</dict>
+	</array>
+</dict>
+</plist>
