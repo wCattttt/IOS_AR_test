@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ISH-zF-tnt">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--拍照-->
+        <scene sceneID="kCO-tp-Q2O">
+            <objects>
+                <viewController id="pdy-AP-9LW" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ues-L1-UU0"/>
+                        <viewControllerLayoutGuide type="bottom" id="m7X-p3-tE0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p95-Lz-oyI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="拍照" id="zwZ-Fv-jod"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6kM-6R-ZIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269.5" y="420.5"/>
+        </scene>
+        <!--Image Filter Process View Controller-->
+        <scene sceneID="Yzg-Zh-VfT">
+            <objects>
+                <viewController storyboardIdentifier="ImageFilterProcessViewController" id="Mj4-mD-K6B" customClass="ImageFilterProcessViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YQG-zv-9qE"/>
+                        <viewControllerLayoutGuide type="bottom" id="IFD-al-aDx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hGh-j9-zLe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDa-0z-rFS">
+                                <rect key="frame" x="16" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="c6O-Hc-8LZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="fPL-ab-b1M"/>
+                                </constraints>
+                                <state key="normal" image="navigation_back_light.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backView:" destination="Mj4-mD-K6B" eventType="touchUpInside" id="NaY-mV-wfP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48j-eQ-aG7">
+                                <rect key="frame" x="299" y="20" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.34753754739999998" green="0.62171609370000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="JPJ-7t-9kE"/>
+                                </constraints>
+                                <state key="normal" title="下一步">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fitlerDone:" destination="Mj4-mD-K6B" eventType="touchUpInside" id="eoi-mh-m2C"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-Q1-w57">
+                                <rect key="frame" x="51" y="15" width="240" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zwk-RM-GQn"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="48j-eQ-aG7" firstAttribute="trailing" secondItem="hGh-j9-zLe" secondAttribute="trailingMargin" id="0yb-61-U9p"/>
+                            <constraint firstItem="mDa-0z-rFS" firstAttribute="leading" secondItem="hGh-j9-zLe" secondAttribute="leadingMargin" id="5Bc-RN-ghQ"/>
+                            <constraint firstItem="dbX-Q1-w57" firstAttribute="leading" secondItem="mDa-0z-rFS" secondAttribute="trailing" constant="5" id="8Jf-F1-zgO"/>
+                            <constraint firstItem="mDa-0z-rFS" firstAttribute="top" secondItem="YQG-zv-9qE" secondAttribute="bottom" id="9Q6-ZU-7pO"/>
+                            <constraint firstItem="dbX-Q1-w57" firstAttribute="top" secondItem="hGh-j9-zLe" secondAttribute="topMargin" constant="15" id="HKA-RY-KzT"/>
+                            <constraint firstItem="48j-eQ-aG7" firstAttribute="leading" secondItem="dbX-Q1-w57" secondAttribute="trailing" constant="8" id="f6H-ag-A5T"/>
+                            <constraint firstItem="48j-eQ-aG7" firstAttribute="top" secondItem="YQG-zv-9qE" secondAttribute="bottom" id="qM5-Bn-ege"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="_nextButton" destination="48j-eQ-aG7" id="jvs-Ho-rsc"/>
+                        <outlet property="_scrollView" destination="dbX-Q1-w57" id="xVl-5r-xcu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39f-uZ-fNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1725.5" y="415.5"/>
+        </scene>
+        <!--发布照片-->
+        <scene sceneID="QqJ-4Y-Pj0">
+            <objects>
+                <viewController storyboardIdentifier="sendViewController" id="8OI-bv-vWe" customClass="SendViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ird-tJ-E4g"/>
+                        <viewControllerLayoutGuide type="bottom" id="jof-GE-smO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xpF-tI-hsh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8r-Nh-DmY">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="publish_icon_location.png" translatesAutoresizingMaskIntoConstraints="NO" id="cem-bx-gqz">
+                                        <rect key="frame" x="8" y="10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="8EK-e4-Zdq"/>
+                                            <constraint firstAttribute="width" constant="20" id="Y29-3a-IgU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="social_weibo40G.png" translatesAutoresizingMaskIntoConstraints="NO" id="uWG-WG-fep">
+                                        <rect key="frame" x="347" y="10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="k3f-U7-sSv"/>
+                                            <constraint firstAttribute="width" constant="20" id="st2-ne-CyC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x03-3b-uHp">
+                                        <rect key="frame" x="36" y="11" width="28" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5G-H3-XWq">
+                                        <rect key="frame" x="294" y="5" width="45" height="30"/>
+                                        <state key="normal" title="同步到">
+                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeepWeibo:" destination="8OI-bv-vWe" eventType="touchUpInside" id="7tt-kf-SA7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="cem-bx-gqz" firstAttribute="leading" secondItem="F8r-Nh-DmY" secondAttribute="leading" constant="8" id="27D-Es-jJZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="o5G-H3-XWq" secondAttribute="bottom" constant="5" id="4As-b8-wCa"/>
+                                    <constraint firstAttribute="bottom" secondItem="x03-3b-uHp" secondAttribute="bottom" constant="8" id="Kd1-Ii-YJQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="cem-bx-gqz" secondAttribute="bottom" constant="10" id="MYe-RY-Flj"/>
+                                    <constraint firstItem="x03-3b-uHp" firstAttribute="top" secondItem="F8r-Nh-DmY" secondAttribute="top" constant="11" id="QOe-a9-GSq"/>
+                                    <constraint firstItem="uWG-WG-fep" firstAttribute="leading" secondItem="o5G-H3-XWq" secondAttribute="trailing" constant="8" id="Ykf-43-3eo"/>
+                                    <constraint firstItem="uWG-WG-fep" firstAttribute="top" secondItem="F8r-Nh-DmY" secondAttribute="top" constant="10" id="c4k-3F-s7n"/>
+                                    <constraint firstAttribute="trailing" secondItem="uWG-WG-fep" secondAttribute="trailing" constant="8" id="d3t-LI-t60"/>
+                                    <constraint firstItem="x03-3b-uHp" firstAttribute="leading" secondItem="cem-bx-gqz" secondAttribute="trailing" constant="8" id="dna-WA-gkE"/>
+                                    <constraint firstAttribute="bottom" secondItem="uWG-WG-fep" secondAttribute="bottom" constant="10" id="fFQ-qZ-TrR"/>
+                                    <constraint firstItem="o5G-H3-XWq" firstAttribute="top" secondItem="F8r-Nh-DmY" secondAttribute="top" constant="5" id="o6J-UD-TkT"/>
+                                    <constraint firstAttribute="height" constant="40" id="wve-za-w7q"/>
+                                    <constraint firstItem="cem-bx-gqz" firstAttribute="top" secondItem="F8r-Nh-DmY" secondAttribute="top" constant="10" id="x0f-HX-V0O"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jof-GE-smO" firstAttribute="top" secondItem="F8r-Nh-DmY" secondAttribute="bottom" id="XYM-fm-j0J"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F8r-Nh-DmY" secondAttribute="trailing" constant="-16" id="rzg-Al-lnc"/>
+                            <constraint firstItem="F8r-Nh-DmY" firstAttribute="leading" secondItem="xpF-tI-hsh" secondAttribute="leadingMargin" constant="-16" id="xJw-Iz-GUO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="发布照片" id="32n-MF-E0u">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Zeo-cY-9IO">
+                            <connections>
+                                <action selector="Close:" destination="8OI-bv-vWe" id="ER9-6t-YZ2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="发布" id="Sx1-vf-FrI">
+                            <connections>
+                                <action selector="Send:" destination="8OI-bv-vWe" id="4BA-g9-QzV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="_locationLabel" destination="x03-3b-uHp" id="U6c-Gt-GxP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ec4-YE-pAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2675.5" y="415.5"/>
+        </scene>
+        <!--Fell Navigation Controller-->
+        <scene sceneID="V4d-AJ-NRc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ISH-zF-tnt" customClass="FellNavigationController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o7K-ZW-1Kb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pdy-AP-9LW" kind="relationship" relationship="rootViewController" id="Zbd-YZ-bcb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pnx-r1-GYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746.5" y="420.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="navigation_back_light.png" width="36" height="36"/>
+        <image name="publish_icon_location.png" width="40" height="40"/>
+        <image name="social_weibo40G.png" width="40" height="40"/>
+    </resources>
+</document>
