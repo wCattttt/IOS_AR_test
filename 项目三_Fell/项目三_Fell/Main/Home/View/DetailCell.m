@@ -2,95 +2,179 @@
 //  DetailCell.m
 //  项目三_Fell
 //
-//  Created by imac on 15/11/3.
+//  Created by imac on 15/11/6.
 //  Copyright (c) 2015年 imac. All rights reserved.
 //
 
 #import "DetailCell.h"
-#import "AttentionModel.h"
+#import "DetailCommentModel.h"
 #import "OwnerModel.h"
 #import "CardModel.h"
-#import "UIView+FDCollapsibleConstraints.h"
 #import "UIImageView+WebCache.h"
 #import "CommentModel.h"
-#import "DetailCommentModel.h"
+#import "UIView+FDCollapsibleConstraints.h"
 
-#define cellWidth self.contentView.bounds.size.width
-#define cellHeight self.contentView.bounds.size.height
+#define cellWidth self.bounds.size.width
 
 @implementation DetailCell
 {
-//    NSMutableArray *_commentDatas;
-//    NSMutableArray *_replyDatas;
-//    NSMutableDictionary *_comment;  // 每条评论对应的回复 key:评论ID，value:评论对应的回复
+    UIImageView *ownerImageView;
+    UILabel *nameLabel;
+    UILabel *timeLabel;
+    UILabel *replyLabel;
+    UIImageView *replyImageView;
+    UILabel *contentLabel;
+    UIView *bgView;
 }
-
-- (void)awakeFromNib {
-    // Initialization code
-}
-
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
-//        [self _createView];
+
     }
     return self;
 }
-- (void)_createView{
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        
+    }
+    return self;
+}
+
+- (void)awakeFromNib {
+    _ownerImageVIew.layer.masksToBounds = YES;
+    _ownerImageVIew.layer.cornerRadius = 20;
+    
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+
+- (void)layoutSubviews{
+    
 }
 
 - (void)setDetailCommentModel:(DetailCommentModel *)detailCommentModel{
     _detailCommentModel = detailCommentModel;
-
+    
     // 头像
-    UIImageView *ownerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8, 8, 40, 40)];
-    [ownerImageView setImageWithURL:[NSURL URLWithString:_detailCommentModel.from_ownerModel.avatar]];
-    ownerImageView.backgroundColor = [UIColor grayColor];
-    [self.contentView addSubview:ownerImageView];
+    [_ownerImageVIew setImageWithURL:[NSURL URLWithString:_detailCommentModel.from_ownerModel.avatar] placeholderImage:[UIImage imageNamed:@"cbutton_float64@2x"]];
     
     // 名字
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(ownerImageView.right + 8, 8 , 100, 24)];
-    nameLabel.text = _detailCommentModel.from_ownerModel.nick;
-    [self.contentView addSubview:nameLabel];
+    _nameLabel.text = _detailCommentModel.from_ownerModel.nick;
     
     // 时间
-    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(nameLabel.left, ownerImageView.bottom - 20, 60, 20)];
-    timeLabel.text = _detailCommentModel.create_time;
-    timeLabel.font = [UIFont systemFontOfSize:12];
-    [self.contentView addSubview:timeLabel];
+    _timeLabel.text = _detailCommentModel.create_time;
     
     // 回复数
-    UILabel *replyLabel = [[UILabel alloc] initWithFrame:CGRectMake(cellWidth - 60, 8, 60, 21)];
-    replyLabel.text = [NSString stringWithFormat:@"回复(%ld)", [_detailCommentModel.subCommentCount integerValue]];
-    replyLabel.font = [UIFont systemFontOfSize:14];
-    [self.contentView addSubview:replyLabel];
-    
-    // 回复
-    UIImageView *replyImageView = [[UIImageView alloc] initWithFrame:CGRectMake(cellWidth - replyLabel.width - 20, 8, 20, 20)];
-    replyImageView.image = [UIImage imageNamed:@"icon_comments36C.png"];
-    [self.contentView addSubview:replyImageView];
+    if(_detailCommentModel.subCommentCount > 0){
+        _replyLabel.text = [NSString stringWithFormat:@"回复(%@)", [_detailCommentModel.subCommentCount stringValue]];
+    }else{
+        _replyLabel.text = @"回复";
+    }
     
     // 内容
-    UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(nameLabel.left, timeLabel.bottom + 8, cellWidth - nameLabel.left - 8, [self calculateText:_detailCommentModel.content fontSize:14])];
-    NSLog(@"%@++++++++++++%f", _detailCommentModel.content,[self calculateText:_detailCommentModel.content fontSize:14]);
-    contentLabel.numberOfLines = 0;
-    contentLabel.text = _detailCommentModel.content;
-    [self.contentView addSubview:contentLabel];
+    _contextLabel.text = _detailCommentModel.content;
     
-    // 回复视图
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(contentLabel.left, contentLabel.bottom + 8, cellWidth - contentLabel.left - 8, 40)];
-    bgView.backgroundColor = [UIColor redColor];
-    [self.contentView addSubview:bgView];
+    // 回复的背景
+    
+    if([_detailCommentModel.subCommentCount integerValue] > 0){
+        switch ([_detailCommentModel.subCommentCount integerValue]) {
+            case 1:
+                [self replyOne];
+                break;
+                
+            case 2:
+                [self replyOne];
+                [self replyTwo];
+                break;
+                
+            default:
+                [self replyOne];
+                [self replyTwo];
+                [self replyThree];
+                // 所有回复
+                _allreplyLabel.text = [NSString stringWithFormat:@"查看 %ld 条回复", [_detailCommentModel.subCommentCount integerValue]];
+                break;
+        }
+    }else{
+        _bgView.hidden = YES;
+        _replyOneView.hidden = YES;
+        _replyTwoView.hidden = YES;
+        _replyThreeView.hidden = YES;
+
+        _bgView.fd_collapsed = YES;
+        _replyOneView.fd_collapsed = YES;
+        _replyTwoView.fd_collapsed = YES;
+        _replyThreeView.fd_collapsed = YES;
+    }
     
     
 }
 
+
+- (void)replyOne{
+    // 回复一
+    _bgView.hidden = NO;
+    _bgView.fd_collapsed = NO;
+    _replyOneView.hidden = NO;
+    _replyOneView.fd_collapsed = NO;
+    _replyTwoView.hidden = YES;
+    _replyTwoView.fd_collapsed = YES;
+    _replyThreeView.hidden = YES;
+    _replyThreeView.fd_collapsed = YES;
+    _allreplyView.hidden = YES;
+    _allreplyView.fd_autoCollapse = YES;
+    CommentModel *oneModel = _detailCommentModel.subCommentModels[0];
+    _userOneLabel.text = [NSString stringWithFormat:@"%@:", oneModel.from_ownerModel.nick];
+    _commentOneLabel.text = oneModel.content;
+}
+
+- (void)replyTwo{
+    // 回复二
+    _bgView.hidden = NO;
+    _bgView.fd_collapsed = NO;
+//    _bgView.transform = CGAffineTransformMakeScale(1, 1);
+    
+//    _replyOneView.hidden = NO;
+    _replyTwoView.hidden = NO;
+//    _replyOneView.fd_collapsed = NO;
+    _replyTwoView.fd_collapsed = NO;
+    _replyThreeView.hidden = YES;
+    _replyThreeView.fd_collapsed = YES;
+    _allreplyView.hidden = YES;
+    _allreplyView.fd_autoCollapse = YES;
+    CommentModel *twoModel = _detailCommentModel.subCommentModels[1];
+    _userTwoLabel.text = [NSString stringWithFormat:@"%@:", twoModel.from_ownerModel.nick];
+    _commentTwoLabel.text = twoModel.content;
+}
+
+- (void)replyThree{
+    // 回复三
+    _bgView.hidden = NO;
+    _bgView.fd_collapsed = NO;
+//    _replyOneView.hidden = NO;
+//    _replyTwoView.hidden = NO;
+    _replyThreeView.hidden = NO;
+//    _replyOneView.fd_collapsed = NO;
+//    _replyTwoView.fd_collapsed = NO;
+    _replyThreeView.fd_collapsed = NO;
+    CommentModel *threeModel = _detailCommentModel.subCommentModels[2];
+    _userThreeLabel.text = [NSString stringWithFormat:@"%@:", threeModel.from_ownerModel.nick];
+    _commentThreeLabel.text = threeModel.content;
+}
+
 - (CGFloat)calculateText:(NSString *)text fontSize:(NSInteger)size{
-    CGSize fontsize = CGSizeMake(250, 1000);
+    CGSize fontsize = CGSizeMake(180, 1000);
     UIFont *font = [UIFont systemFontOfSize:size];
     CGRect frame = [text boundingRectWithSize:fontsize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
     return frame.size.height;
 }
+
 
 @end

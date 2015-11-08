@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIView+FDCollapsibleConstraints.h"
 #import "NSDate+TimeAgo.h"
+#import <ShareSDK/ShareSDK.h>
 
 #define domain @"http://img01.feelapp.cc/"
 
@@ -25,7 +26,7 @@
     _attentionButton.layer.masksToBounds = YES;
     _attentionButton.layer.cornerRadius = 10;
 
-    [_shareButton addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [_shareButton addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
     _shareButton.layer.masksToBounds = YES;
     _shareButton.layer.cornerRadius = 8;
     
@@ -101,6 +102,11 @@
     [_comtentImageView setImageWithURL:[NSURL URLWithString:picName] placeholderImage:nil options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
     }];
+//    CGFloat width = [[[_attentionModel.cardModel.pics firstObject]objectForKey:@"width"] floatValue];
+//    CGFloat height = [[[_attentionModel.cardModel.pics firstObject]objectForKey:@"height"] floatValue];
+//    _comtentImageView.transform = CGAffineTransformMakeScale(width / self.bounds.size.width, height / self.bounds.size.width);
+//    _comtentImageView.transform = CGAffineTransformMakeScale(self.bounds.size.width / _comtentImageView.size.width, self.bounds.size.width / _comtentImageView.size.width);
+    
 
     NSString *comtentString = _attentionModel.cardModel.desc;
 //    comtentString = [comtentString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
@@ -175,8 +181,10 @@
     }else{
         [self createLikeView:_attentionModel.cardModel.likeOwners.count];
     }
+  
     
-    
+    // 点赞数
+    [_likeButton setTitle:[_attentionModel.cardModel.very_count stringValue] forState:UIControlStateNormal];
 }
 
 - (void)createLikeView:(NSInteger)count{
@@ -192,7 +200,7 @@
         likeImageView.layer.masksToBounds = YES;
         likeImageView.layer.cornerRadius = 15;
         OwnerModel *ownerModel = _attentionModel.cardModel.likeOwners[i-1];
-        [likeImageView setImageWithURL:[NSURL URLWithString:ownerModel.avatar]];
+        [likeImageView setImageWithURL:[NSURL URLWithString:ownerModel.avatar] placeholderImage:[UIImage imageNamed:@"tint_CCC"]];
         [_likeView addSubview:likeImageView];
     }
 }
@@ -222,7 +230,43 @@
 }
 
 #pragma mark 分享按钮点击方法
-- (void)shareAction:(UIButton *)button{
+// 分享按钮
+#warning 根据选择的内容填充数据分享微博
+- (IBAction)shareAction:(id)sender {
+    
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"shareTest.jpg" ofType:nil];
+    
+    //1.构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"根据AttentionModel填充分享内容"
+                                       defaultContent:@"测试一下"
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"Fell"
+                                                  url:@"http://www.mob.com"
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //2.创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    //3.弹出分享菜单
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+    
     
 }
 

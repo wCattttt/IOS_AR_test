@@ -33,12 +33,14 @@
     NSString *timeString = [date timeAgoWithLimit:24*60*60 dateFormatter:dateFormatter];
     self.actionTime = timeString;
     
+    
+    // 处理图片
     NSString *ownerImageName = [[dataDic[@"card"] objectForKey:@"owner"] objectForKey:@"avatar"];
     
     if([dataDic[@"actorId"] integerValue] == 2){
         self.cardModel.ownerModel.avatar = [NSString stringWithFormat:@"%@%@", domain , ownerImageName];
     }
-    if([dataDic[@"actorId"] integerValue] == 2 && [[dataDic[@"card"] objectForKey:@"type"] isEqualToString:@"card"]) {
+    if(([dataDic[@"actorId"] integerValue] == 2 && [[dataDic[@"card"] objectForKey:@"type"] isEqualToString:@"card"]) || ([dataDic[@"actorId"] integerValue] == 2 && [[dataDic[@"card"] objectForKey:@"type"] isEqualToString:@"vote"])) {
         NSMutableArray *pics = [NSMutableArray array];
         for(int i = 0; i<self.cardModel.pics.count; i++){
             NSDictionary *picDic = [dataDic[@"card"] objectForKey:@"pics"][i];

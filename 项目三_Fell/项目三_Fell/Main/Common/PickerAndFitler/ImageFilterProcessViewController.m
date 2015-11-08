@@ -10,8 +10,14 @@
 #import "ImageUtil.h"
 #import "ColorMatrix.h"
 #import "IphoneScreen.h"
-@interface ImageFilterProcessViewController ()
+#import "SendViewController.h"
 
+@interface ImageFilterProcessViewController ()
+{
+//    NSMutableArray *_editImageDatas;
+    NSInteger _index;
+    UIImageView *_selectImageView;
+}
 @end
 
 @implementation ImageFilterProcessViewController
@@ -32,19 +38,37 @@
 }
 - (IBAction)fitlerDone:(id)sender
 {
-    [self dismissViewControllerAnimated:NO completion:^{
-        [delegate imageFitlerProcessDone:rootImageView.image];
-    }];
+//    [self dismissViewControllerAnimated:NO completion:^{
+//        [delegate imageFitlerProcessDone:rootImageView.image];
+//    }];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Photo" bundle:nil];
+    SendViewController *sendVC = [storyboard instantiateViewControllerWithIdentifier:@"sendViewController"];
+    sendVC.imageData = _imgData;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sendVC];
+    [self presentViewController:nav animated:YES completion:nil];
+//    [self.navigationController pushViewController:sendVC animated:YES];
+    
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    // 将传入的图片数组给_editImageDatas
+//    _editImageDatas = [_imgData retain];
+    
+    _index = 0;
+    
     _nextButton.layer.masksToBounds = YES;
     _nextButton.layer.cornerRadius = 15;
     
-    
     [self createScrolleView];
+    
+    // 创建选择图片
+    _selectImageView = [[UIImageView alloc] initWithFrame:CGRectMake(51 + 15, 35, 10, 10)];
+    _selectImageView.image = [[UIImage imageNamed:@"checkin_button_checkin148"] retain];
+    [self.view addSubview:_selectImageView];
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"btn_back.png"] forState:UIControlStateNormal];
@@ -64,13 +88,13 @@
     [self.view addSubview:rootImageView];
     
     NSArray *arr = [NSArray arrayWithObjects:@"原图",@"LOMO",@"黑白",@"复古",@"哥特",@"锐色",@"淡雅",@"酒红",@"青柠",@"浪漫",@"光晕",@"蓝调",@"梦幻",@"夜色", nil];
-    scrollerView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 80, 320, 80)];
+    scrollerView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 100, self.view.bounds.size.width, 80)];
     scrollerView.backgroundColor = [UIColor clearColor];
     scrollerView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     scrollerView.showsHorizontalScrollIndicator = NO;
     scrollerView.showsVerticalScrollIndicator = NO;//关闭纵向滚动条
     scrollerView.bounces = NO;
-  
+
     float x = 0.0 ;
     for(int i=0;i<14;i++)
     {
@@ -118,12 +142,13 @@
 //    [_imgData removeObject:currentImage];
 //    [_imgData insertObject:image atIndex:0];
     // 将处理好的图片和原来图片替换
-    NSInteger index = [_imgData indexOfObject:currentImage];
-    if (index <= _imgData.count -1) {
-        [_imgData replaceObjectAtIndex:index withObject:image];
+//    NSInteger index = [_imgData indexOfObject:currentImage];
+    if (_index <= _imgData.count -1) {
+        [_imgData replaceObjectAtIndex:_index withObject:image];
         rootImageView.image = [image retain];
     }
-    currentImage = [image retain];
+//    currentImage = [image retain];
+//    currentImage = [_imgData[index] retain];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -234,6 +259,9 @@
 #pragma mrak 点击图片按钮
 - (void)imageAction:(UIButton *)button{
 //    NSLog(@"%ld", button.tag);
+    
+    _selectImageView.frame = CGRectMake(button.left + 20 + 45, button.top+30, 10, 10);
+    _index = button.tag - 10;
     rootImageView.image = _imgData[button.tag - 10];
     currentImage = nil;
     [currentImage release];
@@ -255,6 +283,8 @@
     _nextButton = nil;
     _imgData = nil, [_imgData release];
     [currentImage release],currentImage  =nil;
-    
+    [_selectImageView release],_selectImageView=nil;
+//    _editImageDatas = nil;
+//    [_editImageDatas release];
 }
 @end

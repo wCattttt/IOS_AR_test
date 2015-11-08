@@ -71,6 +71,23 @@
                                     <constraint firstAttribute="height" constant="40" id="zwk-RM-GQn"/>
                                 </constraints>
                             </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_filter.png" translatesAutoresizingMaskIntoConstraints="NO" id="E2t-Rh-Qr6">
+                                <rect key="frame" x="134" y="527" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="8LW-2Z-hma"/>
+                                    <constraint firstAttribute="height" constant="30" id="daU-7f-VZR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="滤镜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjQ-FA-VZB">
+                                <rect key="frame" x="172" y="531" width="34" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6vw-ra-W5d"/>
+                                    <constraint firstAttribute="width" constant="34" id="gbS-2M-1N3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -79,7 +96,11 @@
                             <constraint firstItem="dbX-Q1-w57" firstAttribute="leading" secondItem="mDa-0z-rFS" secondAttribute="trailing" constant="5" id="8Jf-F1-zgO"/>
                             <constraint firstItem="mDa-0z-rFS" firstAttribute="top" secondItem="YQG-zv-9qE" secondAttribute="bottom" id="9Q6-ZU-7pO"/>
                             <constraint firstItem="dbX-Q1-w57" firstAttribute="top" secondItem="hGh-j9-zLe" secondAttribute="topMargin" constant="15" id="HKA-RY-KzT"/>
+                            <constraint firstItem="IFD-al-aDx" firstAttribute="top" secondItem="E2t-Rh-Qr6" secondAttribute="bottom" constant="110" id="HjI-58-2O3"/>
+                            <constraint firstItem="E2t-Rh-Qr6" firstAttribute="leading" secondItem="hGh-j9-zLe" secondAttribute="leadingMargin" constant="118" id="XoK-Ps-4zk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SjQ-FA-VZB" secondAttribute="trailing" constant="153" id="YNa-oA-cMX"/>
                             <constraint firstItem="48j-eQ-aG7" firstAttribute="leading" secondItem="dbX-Q1-w57" secondAttribute="trailing" constant="8" id="f6H-ag-A5T"/>
+                            <constraint firstItem="IFD-al-aDx" firstAttribute="top" secondItem="SjQ-FA-VZB" secondAttribute="bottom" constant="115" id="jaM-fo-Dlg"/>
                             <constraint firstItem="48j-eQ-aG7" firstAttribute="top" secondItem="YQG-zv-9qE" secondAttribute="bottom" id="qM5-Bn-ege"/>
                         </constraints>
                     </view>
@@ -123,7 +144,10 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x03-3b-uHp">
-                                        <rect key="frame" x="36" y="11" width="28" height="21"/>
+                                        <rect key="frame" x="36" y="11" width="250" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="e9a-ql-6Iy"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -206,6 +230,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_filter.png" width="40" height="40"/>
         <image name="navigation_back_light.png" width="36" height="36"/>
         <image name="publish_icon_location.png" width="40" height="40"/>
         <image name="social_weibo40G.png" width="40" height="40"/>

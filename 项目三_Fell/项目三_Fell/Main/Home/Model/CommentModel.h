@@ -32,7 +32,7 @@
 @property (nonatomic, strong) NSNumber *to_user_id;
 @property (nonatomic, strong) NSNumber *original_comment_id;
 @property (nonatomic, copy) NSString *content;
-@property (nonatomic, strong) NSNumber *create_time;
+@property (nonatomic, strong) NSString *create_time;
 @property (nonatomic, strong) OwnerModel *from_ownerModel;
 @property (nonatomic, strong) OwnerModel *to_ownerModel;
 @property (nonatomic, copy) NSString *card_user_id;

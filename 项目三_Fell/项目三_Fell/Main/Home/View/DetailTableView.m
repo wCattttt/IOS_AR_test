@@ -14,6 +14,8 @@
 #import "DetailHeaderView.h"
 #import "CommentModel.h"
 #import "DetailCommentModel.h"
+#import "DetailHeaderView.h"
+#import "CommentViewController.h"
 
 @implementation DetailTableView
 
@@ -34,11 +36,12 @@
 }
 
 - (void)_createView{
+    self.backgroundColor = [UIColor whiteColor];
     self.dataSource = self;
     self.delegate = self;
-    
+    self.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
     _identifier = @"detailCell";
-    [self registerClass:[DetailCell class] forCellReuseIdentifier:_identifier];
+    [self registerNib:[UINib nibWithNibName:@"DetailCell" bundle:nil] forCellReuseIdentifier:_identifier];
     
 }
 
@@ -54,26 +57,83 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:_identifier forIndexPath:indexPath];
-    
-    cell.detailCommentModel = _data[_data.count - 1 - indexPath.row];
-    
+    DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:_identifier];
+    cell.clipsToBounds = YES;
+    cell.detailCommentModel = _data[indexPath.row];
+
+//    [self reloadData];
+
      return cell;
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    DetailHeaderView *headerView = [[DetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 0)];
+    DetailHeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"DetailHeaderView" owner:self options:nil] lastObject];
     headerView.attentionModel = _attentionModel;
     return headerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 200;
+    CGFloat height = 66;    // 头像视图+底部间隔高度
+    DetailCommentModel *detailModel = _data[indexPath.row];
+    
+    // 计算评论视图
+    NSInteger count = [detailModel.subCommentCount integerValue];
+    NSLog(@"%ld", count);
+    if(count > 0 && count <= 3){
+        height = height + 24*(count +1);
+    }else if(count > 3){
+        height = height + 24*4;
+    }
+    
+    // 计算文本内容高度
+    // 拿到回复的内容
+    NSString *content = detailModel.content;
+    CGSize fontsize = CGSizeMake(220, 1000);
+    UIFont *font = [UIFont systemFontOfSize:17];
+    content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    CGRect frame = [content boundingRectWithSize:fontsize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
+    height = height + frame.size.height;
+//    NSLog(@"高度：%f", height);
+    return height;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-#warning 根据文本内容和图片计算高度
-    return 0;
+    // 根据文本内容和图片计算高度
+    CGFloat height = 80;    //
+    // 计算文本内容高度
+    NSString *contentText = _attentionModel.cardModel.desc;
+    CGSize fontsize = CGSizeMake(250, 1000);
+    UIFont *font = [UIFont systemFontOfSize:17];
+//    contentText = [contentText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    CGRect frame = [contentText boundingRectWithSize:fontsize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
+    height = height + frame.size.height + 8;
+    
+    // 计算图片高度
+    height = height + (375 + 8) * _attentionModel.cardModel.pics.count;
+    
+    // 计算点赞视图高度
+    if(_attentionModel.cardModel.likeOwners.count > 0){
+        height = height + 38;
+    }
+    
+    return height;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailCommentModel *detailModel = _data[indexPath.row];
+    
+    CommentViewController *commentVC = [[CommentViewController alloc] init];
+    commentVC.detailCommentModel = detailModel;
+    [[self viewController].navigationController pushViewController:commentVC animated:YES];
 }
 
+- (UIViewController *)viewController{
+    UIResponder *next = self.nextResponder;
+    do {
+        if([next isKindOfClass:[UIViewController class]]){
+            return (UIViewController *)next;
+        }
+        next = next.nextResponder;
+    } while (next != nil);
+    return nil;
+}
 
 /*
 - (void)_initData{

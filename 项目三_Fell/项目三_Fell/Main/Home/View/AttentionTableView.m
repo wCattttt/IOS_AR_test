@@ -29,10 +29,10 @@
 }
 
 - (void)_createView{
+    self.backgroundColor = [UIColor whiteColor];
     self.dataSource = self;
     self.delegate = self;
     self.contentInset = UIEdgeInsetsMake(0, 0, 49 + 64, 0);
-    
     
     
     _identifier = @"AttentionCell";
@@ -79,7 +79,7 @@
     NSInteger count = [attentionModel.cardModel.comment_count integerValue];
     NSLog(@"%ld", count);
     if(count <= 3){
-        height = height - 20*(3 - count + 1);
+        height = height - 17*(3 - count + 1);
     }
     
     // 计算文本内容高度

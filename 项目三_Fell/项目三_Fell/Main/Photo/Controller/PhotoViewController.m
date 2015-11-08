@@ -8,7 +8,6 @@
 
 #import "PhotoViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "EditViewController.h"
 
 #define collectionWidth ((self.view.bounds.size.width - 4*5) / 3)
 #define collectionheight ((self.view.bounds.size.width - 4*5) / 3)
@@ -192,6 +191,8 @@
     fitler.imgData = _imageData;
     [fitler setDelegate:self];
     fitler.currentImage = _imageData[0];
+    
+//    UINavigationController *
     [self presentViewController:fitler animated:YES completion:nil];
 }
 

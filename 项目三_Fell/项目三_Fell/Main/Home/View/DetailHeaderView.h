@@ -10,6 +10,22 @@
 
 @class AttentionModel;
 @interface DetailHeaderView : UIView
+{
+    __weak IBOutlet UILabel *_contentLabel;
+    __weak IBOutlet UIImageView *_oneImageView;
+    __weak IBOutlet UIImageView *_twoImageView;
+    __weak IBOutlet UIImageView *_threeImageView;
+    __weak IBOutlet UIImageView *_fourImageView;
+    __weak IBOutlet UIImageView *_fiveImageView;
+    __weak IBOutlet UIImageView *_sixImageView;
+    
+    __weak IBOutlet UILabel *_tagLabel;
+    
+    __weak IBOutlet UIView *_likeView;
+    
+    __weak IBOutlet UIButton *_likeButton;
+    
+}
 
 @property (nonatomic, strong) AttentionModel *attentionModel;
 
