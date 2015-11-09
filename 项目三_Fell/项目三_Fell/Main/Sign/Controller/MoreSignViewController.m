@@ -1,31 +1,23 @@
 //
-//  SignViewController.m
+//  MoreSignViewController.m
 //  项目三_Fell
 //
-//  Created by imac on 15/10/31.
+//  Created by imac on 15/11/9.
 //  Copyright (c) 2015年 imac. All rights reserved.
 //
 
-#import "SignViewController.h"
+#import "MoreSignViewController.h"
 
-@interface SignViewController ()
+@interface MoreSignViewController ()
 
 @end
 
-@implementation SignViewController
+@implementation MoreSignViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _addSignButton.layer.masksToBounds = YES;
-    _addSignButton.layer.cornerRadius = 20;
-    
+    // Do any additional setup after loading the view.
 }
-
-- (IBAction)AddSign:(id)sender {
-    
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

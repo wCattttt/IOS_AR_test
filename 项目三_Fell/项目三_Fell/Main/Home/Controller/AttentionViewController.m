@@ -31,6 +31,8 @@
     _page = 1;
     page_size = 10;
     _tag = 1;
+    
+    _attentionTableView.hidden = YES;
     [self _reloadData];
 
     [self _createView];
@@ -93,6 +95,7 @@
             }];
             _attentionTableView.data = _data;
             [_attentionTableView reloadData];
+            _attentionTableView.hidden = NO;
             // 结束下拉刷新
             [_attentionTableView.gifHeader endRefreshing];
             // 结束上拉加载更多数据

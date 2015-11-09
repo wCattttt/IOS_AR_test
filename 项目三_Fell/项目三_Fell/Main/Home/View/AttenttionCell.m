@@ -64,7 +64,6 @@
     _attentionModel = attentionModel;
     
     // 填充数据
-    
     _nickLabel.text = _attentionModel.cardModel.ownerModel.nick;
     if(_attentionModel.actionTime.length == 0){
         _timeLabel.hidden = YES;
@@ -92,7 +91,7 @@
 //    }
     
     NSString *ownerImageName = _attentionModel.cardModel.ownerModel.avatar;
-    [_userImageView setImageWithURL:[NSURL URLWithString:ownerImageName] placeholderImage:[UIImage imageNamed:@"goal_icon_type_photo36G@2x"]];
+    [_userImageView setImageWithURL:[NSURL URLWithString:ownerImageName] placeholderImage:[UIImage imageNamed:@"cbutton_float64@2x"]];
     
     // 判断是否有多张图片
     if(_attentionModel.cardModel.pics.count <= 1){
@@ -117,9 +116,9 @@
         [tagName appendFormat:@"#%@  ", tagDic[@"bname"]];
     }];
     _tagLabel.text = tagName;
-    if([_attentionModel.cardModel.comment_count longValue] <= 3){
-        _allCommentLabel.hidden = YES;
-        switch ([_attentionModel.cardModel.comment_count integerValue]) {
+    if(_attentionModel.cardModel.comments.count <= 3){
+//        _allCommentLabel.hidden = YES;
+        switch (_attentionModel.cardModel.comments.count) {
             case 0:
                 _cmOneView.fd_collapsed = YES;
                 _cmOneView.hidden = YES;
@@ -127,7 +126,10 @@
                 _cmTwoView.hidden = YES;
                 _cmThreeView.fd_collapsed = YES;
                 _cmThreeView.hidden = YES;
-                _cmAllView.fd_collapsed = YES;
+                if([_attentionModel.cardModel.comment_count integerValue] <= 3){
+                    _allCommentLabel.hidden = YES;
+                    _allCommentLabel.fd_collapsed = YES;
+                }
 //                _commentImageView.fd_collapsed = YES;
                 break;
 
@@ -139,8 +141,10 @@
                 _cmThreeView.hidden = YES;
                 _cmTwoView.fd_collapsed = YES;
                 _cmThreeView.fd_collapsed = YES;
-                _cmAllView.hidden = YES;
-                _cmAllView.fd_collapsed = YES;
+                if([_attentionModel.cardModel.comment_count integerValue] <= 3){
+                    _allCommentLabel.hidden = YES;
+                    _allCommentLabel.fd_collapsed = YES;
+                }
             }
                 break;
                 
@@ -153,13 +157,19 @@
                 
                 _cmThreeView.hidden = YES;
                 _cmThreeView.fd_collapsed = YES;
-                _cmAllView.hidden = YES;
-                _cmAllView.fd_collapsed = YES;
+                if([_attentionModel.cardModel.comment_count integerValue] <= 3){
+                    _allCommentLabel.hidden = YES;
+                    _allCommentLabel.fd_collapsed = YES;
+                }
             }
                 break;
                 
             case 3:
                 [self _reloadMoreComment];
+                if([_attentionModel.cardModel.comment_count integerValue] <= 3){
+                    _allCommentLabel.hidden = YES;
+                    _allCommentLabel.fd_collapsed = YES;
+                }
                 break;
                 
             default:
@@ -171,9 +181,12 @@
         }
     }else{
         [self _reloadMoreComment];
-        // 加载更多评论视图
-        _allCommentLabel.text = [NSString stringWithFormat:@"查看 %ld 条评论",     [_attentionModel.cardModel.comment_count integerValue]];
+        _allCommentLabel.hidden = NO;
+        _allCommentLabel.fd_collapsed = NO;
     }
+    
+    // 加载更多评论视图
+    _allCommentLabel.text = [NSString stringWithFormat:@"查看 %ld 条评论",     [_attentionModel.cardModel.comment_count integerValue]];
     
     // 点赞视图 7
     if(_attentionModel.cardModel.likeOwners.count >= 6){
@@ -233,8 +246,8 @@
 // 分享按钮
 #warning 根据选择的内容填充数据分享微博
 - (IBAction)shareAction:(id)sender {
-    
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"shareTest.jpg" ofType:nil];
+    // textviewbg.png   shareTest.jpg
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"textviewbg.png" ofType:nil];
     
     //1.构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:@"根据AttentionModel填充分享内容"

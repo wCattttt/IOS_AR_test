@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface SignViewController : BaseViewController
+{
+    __weak IBOutlet UIButton *_addSignButton;
+    
+}
 
 @end

@@ -108,7 +108,7 @@
     
     //aspectRatioThumbnail 取得原图
     //    CGImageRef fullImg = [asset aspectRatioThumbnail];
-    
+     
     UIImage *img = [UIImage imageWithCGImage:cgImg];
     imageView.image = img;
    //    cell.tag = indexPath.row;

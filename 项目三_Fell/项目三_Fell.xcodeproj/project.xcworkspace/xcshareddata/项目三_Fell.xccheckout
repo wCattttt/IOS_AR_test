@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>61EBB809-4C2A-40E0-B639-A6DA78A04DB0</string>
 	<key>IDESourceControlProjectName</key>
-	<string>项目三_Fell</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F499BDA8D0B0F675CA86A05D20BBDA5D86E4AB1F</key>
 		<string>https://github.com/weiweilong/IOS_AR_test.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>项目三_Fell/项目三_Fell.xcodeproj</string>
+	<string>项目三_Fell/项目三_Fell.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F499BDA8D0B0F675CA86A05D20BBDA5D86E4AB1F</key>

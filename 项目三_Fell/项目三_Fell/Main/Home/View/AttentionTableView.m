@@ -13,10 +13,14 @@
 #import "OwnerModel.h"
 #import "DetailViewController.h"
 #import "AttentionViewController.h"
+#import "HotHeaderModel.h"
+#import "HeaderImageModel.h"
+#import "UIImageView+WebCache.h"
 
 @implementation AttentionTableView
 {
     NSString *_identifier;
+    UIPageControl *_pageControl;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
@@ -24,6 +28,7 @@
     if(self){
         
         [self _createView];
+        _isHotVC = NO;
     }
     return self;
 }
@@ -43,7 +48,7 @@
 
 - (void)setData:(NSArray *)data{
     _data = data;
-    [self reloadData];
+//    [self reloadData];
 }
 
 #pragma mark UITableView协议方法
@@ -91,7 +96,6 @@
     height = height + frame.size.height;
     return height;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *detailVC = [[DetailViewController alloc] init];
     detailVC.hidesBottomBarWhenPushed = YES;
@@ -105,6 +109,53 @@
     [self.viewController.navigationController pushViewController:detailVC animated:YES];
     
     [self deselectRowAtIndexPath:indexPath animated:YES];
+}
+// 根据是否为热门视图控制器，返回会头视图
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *hotHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
+    if(_isHotVC){
+        hotHeaderView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height / 4);
+        
+        // 是热门视图的时候自定义头视图
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:hotHeaderView.bounds];
+        scrollView.delegate = self;
+        scrollView.pagingEnabled = YES;
+        scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.contentSize = CGSizeMake(_hotHeaderModel.items.count * self.bounds.size.width, hotHeaderView.bounds.size.height);
+        [hotHeaderView addSubview:scrollView];
+        
+        [_hotHeaderModel.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            HeaderImageModel *headerModel = obj;
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width*idx, 0, self.bounds.size.width, hotHeaderView.bounds.size.height - 8)];
+            NSLog(@"%@", headerModel.image);
+            [imageView setImageWithURL:[NSURL URLWithString:headerModel.image] placeholderImage:nil options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            }];
+            
+            [scrollView addSubview:imageView];
+        }];
+        
+        // 添加分页视图
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, hotHeaderView.bounds.size.height - 20, self.bounds.size.width, 10)];
+        _pageControl.numberOfPages = _hotHeaderModel.items.count;
+        _pageControl.currentPage = 0;
+        [hotHeaderView addSubview:_pageControl];
+        
+    }
+    return hotHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section{
+    if(_isHotVC){
+        return self.bounds.size.height / 4;
+    }
+    return 0;
+}
+
+#pragma mark UIScrollView 协议
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+//    NSLog(@"%f", targetContentOffset->x);
+    _pageControl.currentPage = targetContentOffset->x / self.bounds.size.width;
 }
 
 #pragma 响应者

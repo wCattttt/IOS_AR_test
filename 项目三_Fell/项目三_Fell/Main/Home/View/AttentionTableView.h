@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AttentionTableView : UITableView<UITableViewDataSource, UITableViewDelegate>
+@class HotHeaderModel;
+@interface AttentionTableView : UITableView<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+
 @property (nonatomic, retain) NSArray *data;
+@property (nonatomic, assign) BOOL isHotVC;
+@property (nonatomic, retain) HotHeaderModel *hotHeaderModel;
 
 @end
