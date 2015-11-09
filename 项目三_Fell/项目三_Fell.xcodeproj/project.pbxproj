@@ -25,6 +25,16 @@
 		882E347E1BF062B500574524 /* MoreSignCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E347C1BF062B500574524 /* MoreSignCell.m */; };
 		882E347F1BF062B500574524 /* MoreSignCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882E347D1BF062B500574524 /* MoreSignCell.xib */; };
 		882E34821BF0636500574524 /* MoreSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E34811BF0636500574524 /* MoreSignModel.m */; };
+		882E34851BF06A8300574524 /* SignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E34841BF06A8300574524 /* SignModel.m */; };
+		882E34881BF0865F00574524 /* CreateTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E34871BF0865F00574524 /* CreateTableView.m */; };
+		882E348B1BF088EE00574524 /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E348A1BF088EE00574524 /* CreateViewController.m */; };
+		882E348E1BF08B6400574524 /* PersonTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E348D1BF08B6400574524 /* PersonTableView.m */; };
+		882E34921BF08BED00574524 /* InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E34901BF08BED00574524 /* InfoCell.m */; };
+		882E34931BF08BED00574524 /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882E34911BF08BED00574524 /* InfoCell.xib */; };
+		882E34971BF08C1B00574524 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E34951BF08C1B00574524 /* PostCell.m */; };
+		882E34981BF08C1B00574524 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882E34961BF08C1B00574524 /* PostCell.xib */; };
+		882E349C1BF08E9200574524 /* AttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882E349A1BF08E9200574524 /* AttentionCell.m */; };
+		882E349D1BF08E9200574524 /* AttentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882E349B1BF08E9200574524 /* AttentionCell.xib */; };
 		88331A1C1BE4480700932F7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88331A1B1BE4480700932F7D /* main.m */; };
 		88331A1F1BE4480700932F7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88331A1E1BE4480700932F7D /* AppDelegate.m */; };
 		88331A271BE4480700932F7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88331A261BE4480700932F7D /* Images.xcassets */; };
@@ -1066,6 +1076,23 @@
 		882E347D1BF062B500574524 /* MoreSignCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreSignCell.xib; sourceTree = "<group>"; };
 		882E34801BF0636500574524 /* MoreSignModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreSignModel.h; sourceTree = "<group>"; };
 		882E34811BF0636500574524 /* MoreSignModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreSignModel.m; sourceTree = "<group>"; };
+		882E34831BF06A8300574524 /* SignModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignModel.h; sourceTree = "<group>"; };
+		882E34841BF06A8300574524 /* SignModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignModel.m; sourceTree = "<group>"; };
+		882E34861BF0865F00574524 /* CreateTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTableView.h; sourceTree = "<group>"; };
+		882E34871BF0865F00574524 /* CreateTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTableView.m; sourceTree = "<group>"; };
+		882E34891BF088EE00574524 /* CreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
+		882E348A1BF088EE00574524 /* CreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
+		882E348C1BF08B6400574524 /* PersonTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonTableView.h; sourceTree = "<group>"; };
+		882E348D1BF08B6400574524 /* PersonTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonTableView.m; sourceTree = "<group>"; };
+		882E348F1BF08BED00574524 /* InfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoCell.h; sourceTree = "<group>"; };
+		882E34901BF08BED00574524 /* InfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoCell.m; sourceTree = "<group>"; };
+		882E34911BF08BED00574524 /* InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
+		882E34941BF08C1B00574524 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		882E34951BF08C1B00574524 /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		882E34961BF08C1B00574524 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		882E34991BF08E9200574524 /* AttentionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionCell.h; sourceTree = "<group>"; };
+		882E349A1BF08E9200574524 /* AttentionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionCell.m; sourceTree = "<group>"; };
+		882E349B1BF08E9200574524 /* AttentionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttentionCell.xib; sourceTree = "<group>"; };
 		88331A161BE4480700932F7D /* 项目三_Fell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "项目三_Fell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88331A1A1BE4480700932F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88331A1B1BE4480700932F7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2698,6 +2725,17 @@
 			isa = PBXGroup;
 			children = (
 				8833206D1BE4AF7800932F7D /* Person.storyboard */,
+				882E348C1BF08B6400574524 /* PersonTableView.h */,
+				882E348D1BF08B6400574524 /* PersonTableView.m */,
+				882E348F1BF08BED00574524 /* InfoCell.h */,
+				882E34901BF08BED00574524 /* InfoCell.m */,
+				882E34911BF08BED00574524 /* InfoCell.xib */,
+				882E34991BF08E9200574524 /* AttentionCell.h */,
+				882E349A1BF08E9200574524 /* AttentionCell.m */,
+				882E349B1BF08E9200574524 /* AttentionCell.xib */,
+				882E34941BF08C1B00574524 /* PostCell.h */,
+				882E34951BF08C1B00574524 /* PostCell.m */,
+				882E34961BF08C1B00574524 /* PostCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2757,6 +2795,8 @@
 				883320191BE4AE8B00932F7D /* SignViewController.m */,
 				882E34751BF05DD300574524 /* MoreSignViewController.h */,
 				882E34761BF05DD300574524 /* MoreSignViewController.m */,
+				882E34891BF088EE00574524 /* CreateViewController.h */,
+				882E348A1BF088EE00574524 /* CreateViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2766,6 +2806,8 @@
 			children = (
 				882E34801BF0636500574524 /* MoreSignModel.h */,
 				882E34811BF0636500574524 /* MoreSignModel.m */,
+				882E34831BF06A8300574524 /* SignModel.h */,
+				882E34841BF06A8300574524 /* SignModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2779,6 +2821,8 @@
 				882E347B1BF062B500574524 /* MoreSignCell.h */,
 				882E347C1BF062B500574524 /* MoreSignCell.m */,
 				882E347D1BF062B500574524 /* MoreSignCell.xib */,
+				882E34861BF0865F00574524 /* CreateTableView.h */,
+				882E34871BF0865F00574524 /* CreateTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4283,6 +4327,7 @@
 				8833256A1BE4B45A00932F7D /* icon_post24T.png in Resources */,
 				883324591BE4B45A00932F7D /* goal_icon_rank_up@2x.png in Resources */,
 				8833247F1BE4B45A00932F7D /* goal_rt_location_button@2x.png in Resources */,
+				882E34931BF08BED00574524 /* InfoCell.xib in Resources */,
 				883324321BE4B45900932F7D /* follow_icon_add24H.png in Resources */,
 				883324AA1BE4B45A00932F7D /* goal_tool_step_icon.png in Resources */,
 				883324DA1BE4B45A00932F7D /* home_add_friend_nav.png in Resources */,
@@ -4557,6 +4602,7 @@
 				883324711BE4B45A00932F7D /* goal_icon_type_video36G@2x.png in Resources */,
 				8833267E1BE4B45A00932F7D /* social_weibo80R.png in Resources */,
 				8833203A1BE4AE8B00932F7D /* 2.jpg in Resources */,
+				882E34981BF08C1B00574524 /* PostCell.xib in Resources */,
 				883325EB1BE4B45A00932F7D /* logo_160@2x.png in Resources */,
 				883326201BE4B45A00932F7D /* publish_icon_location.png in Resources */,
 				883325981BE4B45A00932F7D /* icon_vote24G.png in Resources */,
@@ -4673,6 +4719,7 @@
 				883325D61BE4B45A00932F7D /* load2_1.png in Resources */,
 				8833250A1BE4B45A00932F7D /* icon_card_operation_highlighted.png in Resources */,
 				883326951BE4B45A00932F7D /* sport_video_icon@2x.png in Resources */,
+				882E349D1BF08E9200574524 /* AttentionCell.xib in Resources */,
 				883326241BE4B45A00932F7D /* publish_icon_vote_add.png in Resources */,
 				8833265A1BE4B45A00932F7D /* sierraVignette.png in Resources */,
 				883325EE1BE4B45A00932F7D /* logo_watermark.png in Resources */,
@@ -4753,11 +4800,14 @@
 				883320231BE4AE8B00932F7D /* AFURLConnectionOperation.m in Sources */,
 				883320481BE4AE8B00932F7D /* UIScrollView+MJExtension.m in Sources */,
 				884C38011BEE2A090038794F /* CommentCell.m in Sources */,
+				882E34921BF08BED00574524 /* InfoCell.m in Sources */,
 				88B6EA211BE8CF96001E9BC7 /* NSDate+TimeAgo.m in Sources */,
 				8833202F1BE4AE8B00932F7D /* NSString+Regex.m in Sources */,
 				8833201E1BE4AE8B00932F7D /* AFHTTPRequestOperation.m in Sources */,
 				8833275B1BE5C2C200932F7D /* AttenttionCell.m in Sources */,
 				882E345B1BEEF70900574524 /* HeaderImageModel.m in Sources */,
+				882E349C1BF08E9200574524 /* AttentionCell.m in Sources */,
+				882E34971BF08C1B00574524 /* PostCell.m in Sources */,
 				883320421BE4AE8B00932F7D /* MJRefreshFooter.m in Sources */,
 				883320571BE4AE8B00932F7D /* SDWebImageManager.m in Sources */,
 				883320641BE4AE8B00932F7D /* PhotoViewController.m in Sources */,
@@ -4783,6 +4833,7 @@
 				883327131BE4BF3E00932F7D /* FindViewController.m in Sources */,
 				883320491BE4AE8B00932F7D /* UIScrollView+MJRefresh.m in Sources */,
 				883327961BE7937900932F7D /* UIView+FDCollapsibleConstraints.m in Sources */,
+				882E34881BF0865F00574524 /* CreateTableView.m in Sources */,
 				8833204C1BE4AE8B00932F7D /* MMDrawerController.m in Sources */,
 				883320341BE4AE8B00932F7D /* MBProgressHUD+Add.m in Sources */,
 				8833205D1BE4AE8B00932F7D /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -4828,6 +4879,7 @@
 				88331F701BE4972E00932F7D /* FellNavigationController.m in Sources */,
 				88B6E9DC1BE8A0BB001E9BC7 /* DetailTableView.m in Sources */,
 				883320291BE4AE8B00932F7D /* UIAlertView+AFNetworking.m in Sources */,
+				882E34851BF06A8300574524 /* SignModel.m in Sources */,
 				88B6EB351BEB8111001E9BC7 /* IphoneScreen.m in Sources */,
 				8833201F1BE4AE8B00932F7D /* AFHTTPRequestOperationManager.m in Sources */,
 				883320441BE4AE8B00932F7D /* MJRefreshGifHeader.m in Sources */,
@@ -4842,6 +4894,7 @@
 				883320431BE4AE8B00932F7D /* MJRefreshGifFooter.m in Sources */,
 				88B6EB341BEB8111001E9BC7 /* ImageUtil.m in Sources */,
 				883320301BE4AE8B00932F7D /* UIView+ViewController.m in Sources */,
+				882E348E1BF08B6400574524 /* PersonTableView.m in Sources */,
 				88B6EA331BEB38A4001E9BC7 /* SendViewController.m in Sources */,
 				883320311BE4AE8B00932F7D /* UIViewExt.m in Sources */,
 				883320281BE4AE8B00932F7D /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -4851,6 +4904,7 @@
 				88B6EB371BEB8111001E9BC7 /* UIImage+Cut.m in Sources */,
 				882E34661BF0326100574524 /* CollectionHeaderView.m in Sources */,
 				883320271BE4AE8B00932F7D /* AFNetworkActivityIndicatorManager.m in Sources */,
+				882E348B1BF088EE00574524 /* CreateViewController.m in Sources */,
 				883320661BE4AE8B00932F7D /* SignViewController.m in Sources */,
 				8842BFA81BECA7BA005D8772 /* DetailCell.m in Sources */,
 				884C37FD1BEE29F20038794F /* CommentTableView.m in Sources */,

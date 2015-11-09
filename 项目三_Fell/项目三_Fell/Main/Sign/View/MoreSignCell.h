@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MoreSignModel;
 
 @interface MoreSignCell : UITableViewCell
+{
+    __weak IBOutlet UIImageView *_imageView;
+    __weak IBOutlet UILabel *_titleLabel;
+    __weak IBOutlet UILabel *_personNumLabel;
+    __weak IBOutlet UILabel *_signWayLabel;
+    
+}
+
+@property (nonatomic, strong) MoreSignModel *moreSignModel;
 
 @end

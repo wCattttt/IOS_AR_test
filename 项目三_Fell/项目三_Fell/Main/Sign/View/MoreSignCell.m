@@ -7,11 +7,21 @@
 //
 
 #import "MoreSignCell.h"
+#import "UIImageView+WebCache.h"
+#import "MoreSignModel.h"
 
 @implementation MoreSignCell
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (void)setMoreSignModel:(MoreSignModel *)moreSignModel{
+    _moreSignModel = moreSignModel;
+    [_imageView setImageWithURL:[NSURL URLWithString:_moreSignModel.icon]];
+    _titleLabel.text = _moreSignModel.intro;
+    _personNumLabel.text = [NSString stringWithFormat:@"%@人参与", _moreSignModel.members];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

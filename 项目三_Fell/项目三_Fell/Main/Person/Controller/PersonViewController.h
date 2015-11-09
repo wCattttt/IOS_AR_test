@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "PersonTableView.h"
 @interface PersonViewController : BaseViewController
-
+{
+    
+    __weak IBOutlet PersonTableView *_personTableView;
+}
 @end

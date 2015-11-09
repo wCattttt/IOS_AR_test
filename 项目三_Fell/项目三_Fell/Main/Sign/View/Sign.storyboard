@@ -29,7 +29,6 @@
                                 </state>
                                 <connections>
                                     <action selector="AddSign:" destination="nhH-K0-7Mk" eventType="touchUpInside" id="GYi-nU-hz0"/>
-                                    <segue destination="bkM-vG-EHs" kind="push" id="TrP-dA-zQY"/>
                                 </connections>
                             </button>
                         </subviews>

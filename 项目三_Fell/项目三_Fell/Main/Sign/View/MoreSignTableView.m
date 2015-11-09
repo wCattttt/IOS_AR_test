@@ -8,6 +8,7 @@
 
 #import "MoreSignTableView.h"
 #import "MoreSignCell.h"
+#import "SignModel.h"
 
 @implementation MoreSignTableView
 {
@@ -27,7 +28,7 @@
     self.delegate = self;
     
     _identifier = @"MoreSignCell";
-    [self registerNib:[UINib nibWithNibName:@"MoreSign" bundle:nil] forCellReuseIdentifier:_identifier];
+    [self registerNib:[UINib nibWithNibName:@"MoreSignCell" bundle:nil] forCellReuseIdentifier:_identifier];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -35,12 +36,18 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MoreSignCell *cell = [tableView dequeueReusableCellWithIdentifier:_identifier forIndexPath:indexPath];
-    
-    
+    cell.moreSignModel = _data[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 76;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    titleLabel.text = @"热门打卡";
+    titleLabel.textColor = [UIColor grayColor];
+    return titleLabel;
 }
 
 
